@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untukmu Sayang</title>
+    <style>
+        body {
+            background: url('karikatur-couple.png') no-repeat center center fixed;
+            background-size: cover;
+            color: black;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        .title {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .message {
+            font-size: 1.2em;
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out forwards;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .heart {
+            font-size: 3em;
+            animation: heartbeat 1s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .music-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 0.8em;
+            background-color: white;
+            color: #ff758c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .flower {
+            position: absolute;
+            top: -50px;
+            font-size: 1.5em;
+            color: pink;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="title">Hai Chessa, Sayangku!</div>
+    <div class="heart">❤️</div>
+    <div class="message">
+        From the moment you walked into my life, everything changed in the most beautiful way. Your love has painted my world with colors I never knew existed, and your presence makes every second feel magical. When I am with You, I feel like I can conquer anything, because with you, I have everything I’ll ever need. You are my heart’s greatest joy, my sweetest love, and my most precious dream come true.<br><br>
+        No words can truly express how much you mean to me. You are the reason I smile a little brighter, laugh a little louder, and love a little deeper. Every day with you is a blessing, and I cherish every moment we share. I promise to stand by you, to love you endlessly, and to remind you every day just how special you are to me. You are my today, my tomorrow, and my forever.
+    </div>
+    <button class="music-button" onclick="toggleMusic()">Putar Musik</button>
+    <audio id="bg-music" loop>
+        <source src="your-song.mp3" type="audio/mp3">
+    </audio>
+    <script>
+        function toggleMusic() {
+            var audio = document.getElementById("bg-music");
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+        function createFlower() {
+            const flower = document.createElement("div");
+            flower.innerHTML = "🌸";
+            flower.classList.add("flower");
+            flower.style.left = Math.random() * 100 + "vw";
+            flower.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(flower);
+            setTimeout(() => {
+                flower.remove();
+            }, 5000);
+        }
+        setInterval(createFlower, 300);
+    </script>
+</body>
+</html>
